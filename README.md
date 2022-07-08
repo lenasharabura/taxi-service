@@ -25,6 +25,6 @@ python manage.py runserver  # start Django project
 
 - Project homepage on Heroku: 
 
-Username: ```admin```
+Username: ```adminuser```
 
-Password: ```admin```
+Password: ```e7Ps2DneGWN7NRph```

@@ -1,0 +1,8 @@
+asgiref==3.5.2
+Django==4.0.6
+django-crispy-forms==1.14.0
+django-debug-toolbar==3.5.0
+sqlparse==0.4.2
+dj-database-url==0.5.0
+psycopg2==2.9.3
+whitenoise==6.2.0
