@@ -23,7 +23,7 @@ python manage.py runserver  # start Django project
 
 ## Links
 
-- Project homepage on Heroku: 
+- [Project homepage on Heroku](https://taxi-service-fast.herokuapp.com/)
 
 Username: ```adminuser```
 
