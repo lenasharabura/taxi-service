@@ -68,3 +68,10 @@ class PrivateCarTests(TestCase):
             list(cars)
         )
 
+    # def test_update_car(self):
+    #     car = Car.objects.create(model="Focus", manufacturer=self.manufacturer)
+    #     new_data = {"model": "Focus 2", "manufacturer": self.manufacturer}
+    #     response = self.client.post(reverse("taxi:car-update", args=[car.id]), new_data)
+    #
+    #     self.assertEqual(car.model, "Focus 2")
+

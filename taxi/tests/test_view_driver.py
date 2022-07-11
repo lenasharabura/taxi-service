@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
+from taxi.models import Driver
+
 
 class PublicDriverTests(TestCase):
     def test_login_required_list(self):
@@ -48,15 +50,10 @@ class PrivateDriverTests(TestCase):
         self.client.force_login(self.user)
 
     def test_retrieve_car_list(self):
-        get_user_model().objects.create(
+        self.driver = get_user_model().objects.create_user(
             username="johnsmith",
             password="123456user",
             license_number="ASD11345",
-        )
-        get_user_model().objects.create(
-            username="superman",
-            password="123456user",
-            license_number="AVD12345",
         )
 
         response = self.client.get(reverse("taxi:driver-list"))
@@ -68,3 +65,20 @@ class PrivateDriverTests(TestCase):
             list(response.context["driver_list"]),
             list(drivers)
         )
+
+    def test_car_create(self):
+        form_data = {
+            "username": "johnsmith",
+            "password1": "123456user",
+            "password2": "123456user",
+            "first_name": "John",
+            "last_name": "Smith",
+            "email": "john@admin.ua",
+            "license_number": "ASD11345",
+        }
+        self.client.post(reverse("taxi:driver-create"), data=form_data)
+        new_driver = get_user_model().objects.get(username=form_data["username"])
+
+        self.assertEqual(new_driver.first_name, form_data["first_name"])
+        self.assertEqual(new_driver.last_name, form_data["last_name"])
+        self.assertEqual(new_driver.license_number, form_data["license_number"])
